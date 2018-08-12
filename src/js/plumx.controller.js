@@ -95,7 +95,7 @@ class PrimoStudioPlumxController {
         if (vm.doi) {
             vm.$timeout(() => {
                 vm.plumx_url = 'https://plu.mx/plum/a/?' + vm.api + '=' + vm.doi;
-                vm.$http.head(vm.plumx_url).then((res) => {
+                vm.$http.head('https://cors-anywhere.herokuapp.com/' + vm.plumx_url).then((res) => {
                     // Get the PlumX script
                     vm.embed_js = vm.plumx_js + '?' + Date.now();
                     vm.angularLoad.loadScript(vm.embed_js).then(() => {
