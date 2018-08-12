@@ -157,7 +157,7 @@ class PrimoStudioPlumXController {
 
 PrimoStudioPlumXController.$inject = [
     'angularLoad',
-    'primoStudioPlumXStudioConfig',
+    'primoStudioPlumxStudioConfig',
     '$http',
     '$scope',
     '$element',

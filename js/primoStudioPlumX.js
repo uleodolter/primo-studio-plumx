@@ -205,7 +205,7 @@ var PrimoStudioPlumXController = function () {
     return PrimoStudioPlumXController;
 }();
 
-PrimoStudioPlumXController.$inject = ['angularLoad', 'primoStudioPlumXStudioConfig', '$http', '$scope', '$element', '$timeout', '$window'];
+PrimoStudioPlumXController.$inject = ['angularLoad', 'primoStudioPlumxStudioConfig', '$http', '$scope', '$element', '$timeout', '$window'];
 
 exports.default = PrimoStudioPlumXController;
 
