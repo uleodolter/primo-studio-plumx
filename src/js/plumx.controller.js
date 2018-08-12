@@ -2,7 +2,7 @@
  * plumx.controller.js
  */
 
-class PrimoStudioPlumXController {
+class PrimoStudioPlumxController {
 
     constructor(angularLoad, studioConfig, $http, $scope, $element, $timeout, $window) {
         this.angularLoad  = angularLoad;
@@ -155,7 +155,7 @@ class PrimoStudioPlumXController {
     }
 }
 
-PrimoStudioPlumXController.$inject = [
+PrimoStudioPlumxController.$inject = [
     'angularLoad',
     'primoStudioPlumxStudioConfig',
     '$http',
@@ -165,4 +165,4 @@ PrimoStudioPlumXController.$inject = [
     '$window'
 ];
 
-export default PrimoStudioPlumXController;
+export default PrimoStudioPlumxController;

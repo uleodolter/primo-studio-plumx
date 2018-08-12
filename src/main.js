@@ -1,3 +1,3 @@
-import PrimoStudioPlumXModule from './js/plumx.module';
+import PrimoStudioPlumxModule from './js/plumx.module';
 
-app.requires.push('primoStudioPlumX');
+app.requires.push('primoStudioPlumx');

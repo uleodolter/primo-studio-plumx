@@ -5,11 +5,11 @@
 import plumxTemplate from '../html/plumx.template.html';
 import controller from './plumx.controller';
 
-const PrimoStudioPlumXComponent = {
-    selector: 'primoStudioPlumX',
+const PrimoStudioPlumxComponent = {
+    selector: 'primoStudioPlumx',
     controller,
     bindings: {parentCtrl: '<'},
     template: plumxTemplate
 };
 
-export default PrimoStudioPlumXComponent;
+export default PrimoStudioPlumxComponent;

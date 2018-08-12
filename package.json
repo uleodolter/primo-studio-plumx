@@ -1,11 +1,11 @@
 {
   "name": "primo-studio-plumx",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Primo Studio PlumX addon",
-  "main": "js/primoStudioPlumX.js",
+  "main": "js/primoStudioPlumx.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/browserify src/main.js -o js/primoStudioPlumX.js -t babelify"
+    "build": "./node_modules/.bin/browserify src/main.js -o js/primoStudioPlumx.js -t babelify"
   },
   "repository": {
     "type": "git",

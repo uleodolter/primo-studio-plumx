@@ -2,10 +2,10 @@
  * plumx.module.js
  */
 
-import PrimoStudioPlumXComponent from './plumx.component';
+import PrimoStudioPlumxComponent from './plumx.component';
 
-export const PrimoStudioPlumXModule = angular
-    .module('primoStudioPlumX', [])
-        .component(PrimoStudioPlumXComponent.selector, PrimoStudioPlumXComponent)
+export const PrimoStudioPlumxModule = angular
+    .module('primoStudioPlumx', [])
+        .component(PrimoStudioPlumxComponent.selector, PrimoStudioPlumxComponent)
         .name;
 

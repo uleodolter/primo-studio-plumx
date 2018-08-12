@@ -18,14 +18,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var plumxTemplate = '<div id="plumx_widget" ng-if="$ctrl.doi">\n    <a href="$ctrl.plumx_url"\n       class="$ctrl.plumx_class"\n       data-size="large"\n       data-popup="$ctrl.plumx_popup"\n       data-badge="$ctrl.plumx_badge"\n       data-site="plum"\n       data-hide-when-empty="true">PlumX</a>\n</div>\n';
 
 
-var PrimoStudioPlumXComponent = {
-    selector: 'primoStudioPlumX',
+var PrimoStudioPlumxComponent = {
+    selector: 'primoStudioPlumx',
     controller: _plumx2.default,
     bindings: { parentCtrl: '<' },
     template: plumxTemplate
 };
 
-exports.default = PrimoStudioPlumXComponent;
+exports.default = PrimoStudioPlumxComponent;
 
 },{"./plumx.controller":2}],2:[function(require,module,exports){
 'use strict';
@@ -42,9 +42,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * plumx.controller.js
  */
 
-var PrimoStudioPlumXController = function () {
-    function PrimoStudioPlumXController(angularLoad, studioConfig, $http, $scope, $element, $timeout, $window) {
-        _classCallCheck(this, PrimoStudioPlumXController);
+var PrimoStudioPlumxController = function () {
+    function PrimoStudioPlumxController(angularLoad, studioConfig, $http, $scope, $element, $timeout, $window) {
+        _classCallCheck(this, PrimoStudioPlumxController);
 
         this.angularLoad = angularLoad;
         this.studioConfig = studioConfig;
@@ -55,7 +55,7 @@ var PrimoStudioPlumXController = function () {
         this.$window = $window;
     }
 
-    _createClass(PrimoStudioPlumXController, [{
+    _createClass(PrimoStudioPlumxController, [{
         key: 'getConfigApiKey',
         value: function getConfigApiKey() {
             return this.studioConfig[0].apikey || '';
@@ -202,12 +202,12 @@ var PrimoStudioPlumXController = function () {
         }
     }]);
 
-    return PrimoStudioPlumXController;
+    return PrimoStudioPlumxController;
 }();
 
-PrimoStudioPlumXController.$inject = ['angularLoad', 'primoStudioPlumxStudioConfig', '$http', '$scope', '$element', '$timeout', '$window'];
+PrimoStudioPlumxController.$inject = ['angularLoad', 'primoStudioPlumxStudioConfig', '$http', '$scope', '$element', '$timeout', '$window'];
 
-exports.default = PrimoStudioPlumXController;
+exports.default = PrimoStudioPlumxController;
 
 },{}],3:[function(require,module,exports){
 'use strict';
@@ -215,7 +215,7 @@ exports.default = PrimoStudioPlumXController;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PrimoStudioPlumXModule = undefined;
+exports.PrimoStudioPlumxModule = undefined;
 
 var _plumx = require('./plumx.component');
 
@@ -223,7 +223,7 @@ var _plumx2 = _interopRequireDefault(_plumx);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var PrimoStudioPlumXModule = exports.PrimoStudioPlumXModule = angular.module('primoStudioPlumX', []).component(_plumx2.default.selector, _plumx2.default).name; /**
+var PrimoStudioPlumxModule = exports.PrimoStudioPlumxModule = angular.module('primoStudioPlumx', []).component(_plumx2.default.selector, _plumx2.default).name; /**
                                                                                                                                                                  * plumx.module.js
                                                                                                                                                                  */
 
@@ -236,6 +236,6 @@ var _plumx2 = _interopRequireDefault(_plumx);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-app.requires.push('primoStudioPlumX');
+app.requires.push('primoStudioPlumx');
 
 },{"./js/plumx.module":3}]},{},[4]);
