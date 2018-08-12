@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * plumx.component.js
  */
 
-var plumxTemplate = '<div id="plumx_widget" ng-if="$ctrl.doi">\n    <a href="$ctrl.plumx_url"\n       class="$ctrl.plumx_class"\n       data-size="large"\n       data-popup="$ctrl.plumx_popup"\n       data-badge="$ctrl.plumx_badge"\n       data-site="plum"\n       data-hide-when-empty="true">PlumX</a>\n</div>\n';
+var plumxTemplate = '<div id="plumx_widget" ng-if="$ctrl.doi">\n    <a ng-href="$ctrl.plumx_url"\n       class="{{$ctrl.plumx_class}}"\n       data-size="large"\n       data-popup="{{$ctrl.plumx_popup}}"\n       data-badge="{{$ctrl.plumx_badge}}"\n       data-site="plum"\n       data-hide-when-empty="true">PlumX</a>\n</div>\n';
 
 
 var PrimoStudioPlumxComponent = {
