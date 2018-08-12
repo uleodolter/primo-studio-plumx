@@ -1,0 +1,36 @@
+{
+  "name": "primo-studio-plumx",
+  "version": "0.0.1",
+  "description": "Primo Studio PlumX addon",
+  "main": "js/primoStudioPlumX.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/browserify src/main.js -o js/primoStudioPlumX.js -t babelify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uleodolter/primo-studio-plumx.git"
+  },
+  "keywords": [
+    "PlumX",
+    "Plum Analytics",
+    "primo",
+    "studio",
+    "primo-explore"
+  ],
+  "author": "Ulrich Leodolter <ulrich.leodolter@obvsg.at> (https://www.obvsg.at/)",
+  "contributors": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uleodolter/primo-studio-plumx/issues"
+  },
+  "homepage": "https://github.com/uleodolter/primo-studio-plumx#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-html-import-to-string": "0.0.1",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.2"
+  }
+}
