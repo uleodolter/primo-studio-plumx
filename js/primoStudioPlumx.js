@@ -213,7 +213,7 @@ exports.default = PrimoStudioPlumxController;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.PrimoStudioPlumxModule = undefined;
 
@@ -223,9 +223,12 @@ var _plumx2 = _interopRequireDefault(_plumx);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var PrimoStudioPlumxModule = exports.PrimoStudioPlumxModule = angular.module('primoStudioPlumx', []).component(_plumx2.default.selector, _plumx2.default).name; /**
-                                                                                                                                                                 * plumx.module.js
-                                                                                                                                                                 */
+var PrimoStudioPlumxModule = exports.PrimoStudioPlumxModule = angular.module('primoStudioPlumx', []).component(_plumx2.default.selector, _plumx2.default).config(['$sceDelegateProvider', function ($sceDelegateProvider) {
+    var whitelist = $sceDelegateProvider.resourceUrlWhitelist();
+    $sceDelegateProvider.resourceUrlWhitelist(whitelist.concat(['https://plu.mx/plum/a/**']));
+}]).name; /**
+           * plumx.module.js
+           */
 
 },{"./plumx.component":1}],4:[function(require,module,exports){
 'use strict';
