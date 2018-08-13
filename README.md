@@ -6,6 +6,12 @@ Primo Studio PlumX addon to the Primo record full display.
 
 See [Primo Studio](https://github.com/ExLibrisGroup/Primo-Studio) project documentation.
 
+## Primo Studio Config options
+
+See [features.json](features.json)
+
+Note: _PlumX API key_ currently not used.
+
 ## About PlumX Widgets
 
 - https://plu.mx/plum/developers/widgets

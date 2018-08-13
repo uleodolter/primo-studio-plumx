@@ -140,18 +140,23 @@ class PrimoStudioPlumxController {
         }
 
         // remove css/js
-        if (vm.embed_js) {
-            el = document.body.querySelector('[src="' + vm.embed_js + '"]');
-            if (el) {
-                el.remove();
-            }
-            vm.embed_js = '';
+        // http://www.javascriptkit.com/javatutors/loadjavascriptcss2.shtml
+        el = document.body.querySelector('[src="' + vm.embed_js + '"]');
+        if (el) {
+            el.remove();
         }
 
         el = document.head.querySelector('link[id="plx-css-popup"]');
         if (el) {
             el.remove();
         }
+
+        document.head.querySelectorAll('script').forEach((script) => {
+            if (script.src.endsWith('jquery/1.10.2/jquery.min.js') ||
+                script.src.endsWith('extjs/xss.js')) {
+                script.parentNode.removeChild(script);
+            }
+        });
     }
 }
 

@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * plumx.component.js
  */
 
-var plumxTemplate = '<div id="plumx_widget" ng-if="$ctrl.doi">\n    <a ng-href="{{$ctrl.plumx_url}}"\n       class="{{$ctrl.plumx_class}}"\n       data-size="large"\n       data-popup="{{$ctrl.plumx_popup}}"\n       data-badge="{{$ctrl.plumx_badge}}"\n       data-site="plum"\n       data-hide-when-empty="true">PlumX</a>\n</div>\n';
+var plumxTemplate = '<div id="plumx_widget" ng-if="$ctrl.doi">\n    <a ng-href="{{$ctrl.plumx_url}}"\n       class="{{$ctrl.plumx_class}}"\n       data-size="large"\n       data-popup="{{$ctrl.plumx_popup}}"\n       data-badge="{{$ctrl.plumx_badge}}"\n       data-site="plum"\n       data-hide-when-empty="true"\n       target="_blank">PlumX {{$ctrl.doi}}</a>\n</div>\n';
 
 
 var PrimoStudioPlumxComponent = {
@@ -187,18 +187,22 @@ var PrimoStudioPlumxController = function () {
             }
 
             // remove css/js
-            if (vm.embed_js) {
-                el = document.body.querySelector('[src="' + vm.embed_js + '"]');
-                if (el) {
-                    el.remove();
-                }
-                vm.embed_js = '';
+            // http://www.javascriptkit.com/javatutors/loadjavascriptcss2.shtml
+            el = document.body.querySelector('[src="' + vm.embed_js + '"]');
+            if (el) {
+                el.remove();
             }
 
             el = document.head.querySelector('link[id="plx-css-popup"]');
             if (el) {
                 el.remove();
             }
+
+            document.head.querySelectorAll('script').forEach(function (script) {
+                if (script.src.endsWith('jquery/1.10.2/jquery.min.js') || script.src.endsWith('extjs/xss.js')) {
+                    script.parentNode.removeChild(script);
+                }
+            });
         }
     }]);
 
