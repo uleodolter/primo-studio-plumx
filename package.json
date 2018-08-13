@@ -4,7 +4,7 @@
   "description": "Primo Studio PlumX addon",
   "main": "js/primoStudioPlumx.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/eslint src/",
     "build": "./node_modules/.bin/browserify src/main.js -o js/primoStudioPlumx.js -t babelify"
   },
   "repository": {
@@ -31,6 +31,8 @@
     "babel-plugin-transform-html-import-to-string": "0.0.1",
     "babel-preset-env": "^1.7.0",
     "babelify": "^8.0.0",
-    "browserify": "^16.2.2"
+    "browserify": "^16.2.2",
+    "eslint": "^5.3.0",
+    "eslint-plugin-angular": "^3.3.0"
   }
 }

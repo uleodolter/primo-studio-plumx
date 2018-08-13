@@ -42,37 +42,37 @@ class PrimoStudioPlumxController {
         vm.plumx_badge = '';
 
         switch(vm.getConfigWidgetType()) {
-            default:
-            case 'print':
-                vm.plumx_class = 'plumx-plum-print-popup';
-                vm.plumx_popup = 'right';
-                vm.plumx_js    += 'popup.js';
-                break;
-            case 'details':
-                vm.plumx_class = 'plumx-details';
-                vm.plumx_js    += 'details.js';
-                break;
-            case 'summary':
-                vm.plumx_class = 'plumx-summary';
-                vm.plumx_js    += 'summary.js';
-                break;
-            case 'badge':
-                vm.plumx_class = 'plumx-plum-print-popup';
-                vm.plumx_popup = 'right';
-                vm.plumx_badge = 'true';
-                vm.plumx_js    += 'popup.js';
-                break;
+        default:
+        case 'print':
+            vm.plumx_class = 'plumx-plum-print-popup';
+            vm.plumx_popup = 'right';
+            vm.plumx_js    += 'popup.js';
+            break;
+        case 'details':
+            vm.plumx_class = 'plumx-details';
+            vm.plumx_js    += 'details.js';
+            break;
+        case 'summary':
+            vm.plumx_class = 'plumx-summary';
+            vm.plumx_js    += 'summary.js';
+            break;
+        case 'badge':
+            vm.plumx_class = 'plumx-plum-print-popup';
+            vm.plumx_popup = 'right';
+            vm.plumx_badge = 'true';
+            vm.plumx_js    += 'popup.js';
+            break;
         }
         switch(vm.getConfigWidgetTheme()) {
-            default:
-            case 'default':
-                break;
-            case 'bigben':
-                vm.plumx_class += ' plumx-bigben-theme';
-                break;
-            case 'liberty':
-                vm.plumx_class += ' plumx-liberty-theme';
-                break;
+        default:
+        case 'default':
+            break;
+        case 'bigben':
+            vm.plumx_class += ' plumx-bigben-theme';
+            break;
+        case 'liberty':
+            vm.plumx_class += ' plumx-liberty-theme';
+            break;
         }
 
         // the prm-full-view container, our parent is prm-full-view-after
@@ -95,15 +95,15 @@ class PrimoStudioPlumxController {
         if (vm.doi) {
             vm.$timeout(() => {
                 vm.plumx_url = 'https://plu.mx/plum/a/?' + vm.api + '=' + vm.doi;
-                vm.$http.head('https://cors-anywhere.herokuapp.com/' + vm.plumx_url).then((res) => {
+                vm.$http.head('https://cors-anywhere.herokuapp.com/' + vm.plumx_url).then((_res) => {
                     // Get the PlumX script
                     vm.embed_js = vm.plumx_js + '?' + Date.now();
                     vm.angularLoad.loadScript(vm.embed_js).then(() => {
                         // Create our new Primo service
                         let plumxSection = {
-                            scrollId: "plumx",
-                            serviceName: "plumx",
-                            title: "brief.results.tabs.PlumX"
+                            scrollId: 'plumx',
+                            serviceName: 'plumx',
+                            title: 'brief.results.tabs.PlumX'
                         };
                         vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, plumxSection);
                     }, (res) => {
@@ -118,7 +118,7 @@ class PrimoStudioPlumxController {
         // move the plumx widget into the new PlumX service section
         let unbindWatcher = vm.$scope.$watch(() => {
             return vm.parentElement.querySelector('h4[translate="brief.results.tabs.PlumX"]');
-        }, (newVal, oldVal) => {
+        }, (newVal, _oldVal) => {
             if (newVal) {
                 // Get the section body associated with the value we're watching
                 let sectionBody = newVal.parentElement.parentElement.parentElement.parentElement.children[1];

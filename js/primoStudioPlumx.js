@@ -142,15 +142,15 @@ var PrimoStudioPlumxController = function () {
             if (vm.doi) {
                 vm.$timeout(function () {
                     vm.plumx_url = 'https://plu.mx/plum/a/?' + vm.api + '=' + vm.doi;
-                    vm.$http.head('https://cors-anywhere.herokuapp.com/' + vm.plumx_url).then(function (res) {
+                    vm.$http.head('https://cors-anywhere.herokuapp.com/' + vm.plumx_url).then(function (_res) {
                         // Get the PlumX script
                         vm.embed_js = vm.plumx_js + '?' + Date.now();
                         vm.angularLoad.loadScript(vm.embed_js).then(function () {
                             // Create our new Primo service
                             var plumxSection = {
-                                scrollId: "plumx",
-                                serviceName: "plumx",
-                                title: "brief.results.tabs.PlumX"
+                                scrollId: 'plumx',
+                                serviceName: 'plumx',
+                                title: 'brief.results.tabs.PlumX'
                             };
                             vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, plumxSection);
                         }, function (res) {
@@ -165,7 +165,7 @@ var PrimoStudioPlumxController = function () {
             // move the plumx widget into the new PlumX service section
             var unbindWatcher = vm.$scope.$watch(function () {
                 return vm.parentElement.querySelector('h4[translate="brief.results.tabs.PlumX"]');
-            }, function (newVal, oldVal) {
+            }, function (newVal, _oldVal) {
                 if (newVal) {
                     // Get the section body associated with the value we're watching
                     var sectionBody = newVal.parentElement.parentElement.parentElement.parentElement.children[1];
@@ -240,6 +240,8 @@ var _plumx2 = _interopRequireDefault(_plumx);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-app.requires.push('primoStudioPlumx');
+app.requires.push(_plumx2.default); /**
+                                     * main.js
+                                     */
 
 },{"./js/plumx.module":3}]},{},[4]);
