@@ -6,7 +6,7 @@
     "what": "PlumX Widget",
     "linkGit": "https://github.com/uleodolter/primo-studio-plumx",
     "npmid": "primo-studio-plumx",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "hook": "prm-full-view-after",
     "config": {
       "form": [
@@ -16,10 +16,22 @@
           "templateOptions": {
             "label": "PlumX Widget type",
             "options": [
-              { "value": "print", "name":"Plum Print" },
-              { "value": "details", "name":"Details" },
-              { "value": "summary", "name":"Summary" },
-              { "value": "badge", "name":"PlumX Badge" }
+              {
+                "value": "print",
+                "name": "Plum Print"
+              },
+              {
+                "value": "details",
+                "name": "Details"
+              },
+              {
+                "value": "summary",
+                "name": "Summary"
+              },
+              {
+                "value": "badge",
+                "name": "PlumX Badge"
+              }
             ]
           }
         },
@@ -29,9 +41,18 @@
           "templateOptions": {
             "label": "PlumX Widget theme",
             "options": [
-              { "value": "default", "name":"Default" },
-              { "value": "bigben", "name":"Big Ben" },
-              { "value": "liberty", "name":"Liberty" }
+              {
+                "value": "default",
+                "name": "Default"
+              },
+              {
+                "value": "bigben",
+                "name": "Big Ben"
+              },
+              {
+                "value": "liberty",
+                "name": "Liberty"
+              }
             ]
           }
         },
