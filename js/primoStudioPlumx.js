@@ -236,12 +236,8 @@ var PrimoStudioPlumxModule = exports.PrimoStudioPlumxModule = angular.module('pr
 
 var _plumx = require('./js/plumx.module');
 
-var _plumx2 = _interopRequireDefault(_plumx);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-app.requires.push(_plumx2.default); /**
-                                     * main.js
-                                     */
+app.requires.push(_plumx.PrimoStudioPlumxModule); /**
+                                                   * main.js
+                                                   */
 
 },{"./js/plumx.module":3}]},{},[4]);
