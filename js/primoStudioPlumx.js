@@ -84,6 +84,7 @@ var PrimoStudioPlumxController = function () {
             vm.embed_js = '';
 
             vm.plumx_js = 'https://d39af2mgp1pqhg.cloudfront.net/widget-';
+            vm.plumx_cssid = 'plx-css-';
             vm.plumx_url = '';
             vm.plumx_popup = '';
             vm.plumx_badge = '';
@@ -94,20 +95,24 @@ var PrimoStudioPlumxController = function () {
                     vm.plumx_class = 'plumx-plum-print-popup';
                     vm.plumx_popup = 'right';
                     vm.plumx_js += 'popup.js';
+                    vm.plumx_cssid += 'popup';
                     break;
                 case 'details':
                     vm.plumx_class = 'plumx-details';
                     vm.plumx_js += 'details.js';
+                    vm.plumx_cssid += 'details';
                     break;
                 case 'summary':
                     vm.plumx_class = 'plumx-summary';
                     vm.plumx_js += 'summary.js';
+                    vm.plumx_cssid += 'summary';
                     break;
                 case 'badge':
                     vm.plumx_class = 'plumx-plum-print-popup';
                     vm.plumx_popup = 'right';
                     vm.plumx_badge = 'true';
                     vm.plumx_js += 'popup.js';
+                    vm.plumx_cssid += 'popup';
                     break;
             }
             switch (vm.getConfigWidgetTheme()) {
@@ -193,7 +198,7 @@ var PrimoStudioPlumxController = function () {
                 el.remove();
             }
 
-            el = document.head.querySelector('link[id="plx-css-popup"]');
+            el = document.head.querySelector('link[id="' + vm.plumx_cssid + '"]');
             if (el) {
                 el.remove();
             }
