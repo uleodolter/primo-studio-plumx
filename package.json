@@ -1,6 +1,6 @@
 {
   "name": "primo-studio-plumx",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Primo Studio PlumX addon",
   "main": "js/primoStudioPlumx.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "babel-plugin-transform-html-import-to-string": "0.0.1",
     "babel-preset-env": "^1.7.0",
     "babelify": "^8.0.0",
-    "browserify": "^16.2.2",
+    "browserify": "^16.2.3",
     "eslint": "^5.3.0",
     "eslint-plugin-angular": "^3.3.0"
   }
