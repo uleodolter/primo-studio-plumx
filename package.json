@@ -1,6 +1,6 @@
 {
   "name": "primo-studio-plumx",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Primo Studio PlumX addon",
   "main": "js/primoStudioPlumx.js",
   "scripts": {
