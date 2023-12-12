@@ -4,8 +4,8 @@
   "description": "Primo Studio PlumX addon",
   "main": "js/primoStudioPlumx.js",
   "scripts": {
-    "test": "./node_modules/.bin/eslint src/",
-    "build": "./node_modules/.bin/browserify src/main.js -o js/primoStudioPlumx.js -t babelify",
+    "test": "eslint src/",
+    "build": "browserify src/main.js -o js/primoStudioPlumx.js -t babelify",
     "version": "jq \".[0].version = `jq .version package.json`\" features.json | sponge features.json && git add features.json"
   },
   "repository": {
@@ -33,7 +33,7 @@
     "babel-plugin-transform-html-import-to-string": "^2.0.0",
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
-    "eslint": "^8.20.0",
+    "eslint": "^8.49.0",
     "eslint-plugin-angular": "^4.1.0"
   }
 }
