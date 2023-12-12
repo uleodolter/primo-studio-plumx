@@ -36,7 +36,7 @@ class PrimoStudioPlumxController {
 
         vm.embed_js = '';
 
-        vm.plumx_js    = 'https://d39af2mgp1pqhg.cloudfront.net/widget-';
+        vm.plumx_js    = 'https://cdn.plu.mx/widget-';
         vm.plumx_cssid = 'plx-css-';
         vm.plumx_url   = '';
         vm.plumx_popup = '';
@@ -100,7 +100,7 @@ class PrimoStudioPlumxController {
         if (vm.doi) {
             vm.$timeout(() => {
                 vm.plumx_url = 'https://plu.mx/plum/a/?' + vm.api + '=' + vm.doi;
-                vm.$http.head('https://cors-anywhere.herokuapp.com/' + vm.plumx_url).then((_res) => {
+                vm.$http.head(vm.plumx_url).then((_res) => {
                     // Get the PlumX script
                     vm.embed_js = vm.plumx_js + '?' + Date.now();
                     vm.angularLoad.loadScript(vm.embed_js).then(() => {
