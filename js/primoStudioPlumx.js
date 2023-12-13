@@ -10,7 +10,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 /*
  * plumx.component.js
  */
-var plumxTemplate = "<div id=\"plumx_widget\" ng-if=\"$ctrl.doi\">\n    <a ng-href=\"{{$ctrl.plumx_url}}\"\n       class=\"{{$ctrl.plumx_class}}\"\n       data-size=\"large\"\n       data-popup=\"{{$ctrl.plumx_popup}}\"\n       data-badge=\"{{$ctrl.plumx_badge}}\"\n       data-site=\"plum\"\n       data-hide-when-empty=\"true\"\n       target=\"_blank\">PlumX {{$ctrl.doi}}</a>\n</div>\n";
+var plumxTemplate = "<div id=\"plumx_widget\" ng-if=\"$ctrl.plumx_url\">\n    <a ng-href=\"{{$ctrl.plumx_url}}\"\n       class=\"{{$ctrl.plumx_class}}\"\n       data-size=\"large\"\n       data-popup=\"{{$ctrl.plumx_popup}}\"\n       data-badge=\"{{$ctrl.plumx_badge}}\"\n       data-site=\"plum\"\n       data-hide-when-empty=\"true\"\n       target=\"_blank\">PlumX {{$ctrl.doi}}</a>\n</div>\n";
 var PrimoStudioPlumxComponent = {
   selector: 'primoStudioPlumx',
   controller: _plumx["default"],
@@ -131,23 +131,30 @@ var PrimoStudioPlumxController = /*#__PURE__*/function () {
       }
       if (vm.doi) {
         vm.$timeout(function () {
-          vm.plumx_url = 'https://plu.mx/plum/a/?' + vm.api + '=' + vm.doi;
-          vm.$http.head(vm.plumx_url).then(function (_res) {
-            // Get the PlumX script
-            vm.embed_js = vm.plumx_js + '?' + Date.now();
-            vm.angularLoad.loadScript(vm.embed_js).then(function () {
-              // Create our new Primo service
-              var plumxSection = {
-                scrollId: 'plumx',
-                serviceName: 'plumx',
-                title: 'brief.results.tabs.PlumX'
-              };
-              vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, plumxSection);
-            }, function (res) {
-              console.log('plumx loadScript failed: ' + res);
-            });
-          }, function (res) {
-            console.log('plumx api failed: ' + res);
+          vm.plumx_api = 'https://api.plu.mx/widget/other/artifact?type=' + vm.api + '&id=' + vm.doi + '&site=plum';
+          vm.$http.get('https://corsproxy.io/?' + vm.plumx_api, {
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(function (res) {
+            if (res.status == 200 && !('error_code' in res.data)) {
+              vm.plumx_url = 'https://plu.mx/plum/a/?' + vm.api + '=' + vm.doi;
+              // Get the PlumX script
+              vm.embed_js = vm.plumx_js + '?' + Date.now();
+              vm.angularLoad.loadScript(vm.embed_js).then(function () {
+                // Create our new Primo service
+                var plumxSection = {
+                  scrollId: 'plumx',
+                  serviceName: 'plumx',
+                  title: 'brief.results.tabs.PlumX'
+                };
+                vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, plumxSection);
+              }, function (err) {
+                console.log('plumx loadScript failed: ' + err);
+              });
+            }
+          }, function (err) {
+            console.log('plumx api failed: ' + err);
           });
         }, 3000);
       }
@@ -177,15 +184,15 @@ var PrimoStudioPlumxController = /*#__PURE__*/function () {
 
       // remove css/js
       // http://www.javascriptkit.com/javatutors/loadjavascriptcss2.shtml
-      el = document.body.querySelector('[src="' + vm.embed_js + '"]');
+      el = vm.$window.document.body.querySelector('[src="' + vm.embed_js + '"]');
       if (el) {
         el.remove();
       }
-      el = document.head.querySelector('link[id="' + vm.plumx_cssid + '"]');
+      el = vm.$window.document.head.querySelector('link[id="' + vm.plumx_cssid + '"]');
       if (el) {
         el.remove();
       }
-      document.head.querySelectorAll('script').forEach(function (script) {
+      vm.$window.document.head.querySelectorAll('script').forEach(function (script) {
         if (script.src.endsWith('jquery/1.10.2/jquery.min.js') || script.src.endsWith('extjs/xss.js')) {
           script.parentNode.removeChild(script);
         }
@@ -211,10 +218,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
  * plumx.module.js
  */
 
-var PrimoStudioPlumxModule = angular.module('primoStudioPlumx', []).component(_plumx["default"].selector, _plumx["default"]).config(['$sceDelegateProvider', function ($sceDelegateProvider) {
-  var whitelist = $sceDelegateProvider.trustedResourceUrlList();
-  $sceDelegateProvider.trustedResourceUrlList(whitelist.concat(['https:/plu.mx/**']));
-}]).name;
+var PrimoStudioPlumxModule = angular.module('primoStudioPlumx', []).component(_plumx["default"].selector, _plumx["default"]).name;
 exports.PrimoStudioPlumxModule = PrimoStudioPlumxModule;
 
 },{"./plumx.component":1}],4:[function(require,module,exports){
