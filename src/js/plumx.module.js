@@ -2,7 +2,7 @@
  * plumx.module.js
  */
 
-import PrimoStudioPlumxComponent from './plumx.component';
+import PrimoStudioPlumxComponent from './plumx.component.js';
 
 export const PrimoStudioPlumxModule = angular
     .module('primoStudioPlumx', [])

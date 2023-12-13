@@ -3,7 +3,7 @@
  */
 
 import plumxTemplate from '../html/plumx.template.html';
-import controller from './plumx.controller';
+import controller from './plumx.controller.js';
 
 const PrimoStudioPlumxComponent = {
     selector: 'primoStudioPlumx',

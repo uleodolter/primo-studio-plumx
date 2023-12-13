@@ -1,5 +1,5 @@
 src
 node_modules
-.babelrc
-.eslintrc.js
+.eslintrc.json
 features.json
+webpack.config.js
