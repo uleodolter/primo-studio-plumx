@@ -6,7 +6,8 @@
   "scripts": {
     "test": "eslint src/",
     "build": "browserify src/main.js -o js/primoStudioPlumx.js -t babelify",
-    "version": "jq \".[0].version = `jq .version package.json`\" features.json | sponge features.json && git add features.json"
+    "preversion": "num run test",
+    "version": "npm run build && jq \".[0].version = `jq .version package.json`\" features.json | sponge features.json && git add features.json"
   },
   "repository": {
     "type": "git",
