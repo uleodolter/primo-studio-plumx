@@ -7,9 +7,9 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": [ "eslint:recommended", "plugin:angular/johnpapa" ],
     "parserOptions": {
-        "ecmaVersion": 2015,
+        "ecmaVersion": 2020,
         "sourceType": "module"
     },
     "rules": {
@@ -32,6 +32,13 @@ module.exports = {
         "no-console": "off",
         "no-unused-vars": [
             2, {"args": "after-used", "argsIgnorePattern": "^_"}
-        ]
+        ],
+        "angular/no-service-method": "off",
+        "angular/function-type": [2, "named"],
+        "angular/file-name": [0, {
+            "typeSeparator": "dot",
+            "ignoreTypeSuffix": true,
+            "componentTypeMappings": {"factory": "factory", "provider": "provider"}
+        }]
     }
 };

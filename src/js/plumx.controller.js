@@ -7,11 +7,11 @@ class PrimoStudioPlumxController {
     constructor(angularLoad, studioConfig, $http, $scope, $element, $timeout, $window) {
         this.angularLoad  = angularLoad;
         this.studioConfig = studioConfig;
-        this.$http        = $http;
-        this.$scope       = $scope;
-        this.$element     = $element;
-        this.$timeout     = $timeout;
-        this.$window      = $window;
+        this.$http = $http;
+        this.$scope = $scope;
+        this.$element = $element;
+        this.$timeout = $timeout;
+        this.$window = $window;
     }
 
     getConfigApiKey() {
@@ -99,23 +99,28 @@ class PrimoStudioPlumxController {
 
         if (vm.doi) {
             vm.$timeout(() => {
-                vm.plumx_url = 'https://plu.mx/plum/a/?' + vm.api + '=' + vm.doi;
-                vm.$http.head(vm.plumx_url).then((_res) => {
-                    // Get the PlumX script
-                    vm.embed_js = vm.plumx_js + '?' + Date.now();
-                    vm.angularLoad.loadScript(vm.embed_js).then(() => {
+                vm.plumx_api = 'https://api.plu.mx/widget/other/artifact?type=' + vm.api + '&id=' + vm.doi + '&site=plum';
+                vm.$http.get('https://corsproxy.io/?' + vm.plumx_api, {
+                    headers : {'Accept' : 'application/json'}
+                }).then((res) => {
+                    if (res.status == 200 && !('error_code' in res.data)) {
+                        vm.plumx_url = 'https://plu.mx/plum/a/?' + vm.api + '=' + vm.doi;
+                        // Get the PlumX script
+                        vm.embed_js = vm.plumx_js + '?' + Date.now();
+                        vm.angularLoad.loadScript(vm.embed_js).then(() => {
                         // Create our new Primo service
-                        let plumxSection = {
-                            scrollId: 'plumx',
-                            serviceName: 'plumx',
-                            title: 'brief.results.tabs.PlumX'
-                        };
-                        vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, plumxSection);
-                    }, (res) => {
-                        console.log('plumx loadScript failed: ' + res);
-                    });
-                }, (res) => {
-                    console.log('plumx api failed: ' + res);
+                            let plumxSection = {
+                                scrollId: 'plumx',
+                                serviceName: 'plumx',
+                                title: 'brief.results.tabs.PlumX'
+                            };
+                            vm.parentCtrl.services.splice(vm.parentCtrl.services.length, 0, plumxSection);
+                        }, (err) => {
+                            console.log('plumx loadScript failed: ' + err);
+                        });
+                    }
+                }, (err) => {
+                    console.log('plumx api failed: ' + err);
                 });
             }, 3000);
         }
@@ -146,17 +151,17 @@ class PrimoStudioPlumxController {
 
         // remove css/js
         // http://www.javascriptkit.com/javatutors/loadjavascriptcss2.shtml
-        el = document.body.querySelector('[src="' + vm.embed_js + '"]');
+        el = vm.$window.document.body.querySelector('[src="' + vm.embed_js + '"]');
         if (el) {
             el.remove();
         }
 
-        el = document.head.querySelector('link[id="' + vm.plumx_cssid + '"]');
+        el = vm.$window.document.head.querySelector('link[id="' + vm.plumx_cssid + '"]');
         if (el) {
             el.remove();
         }
 
-        document.head.querySelectorAll('script').forEach((script) => {
+        vm.$window.document.head.querySelectorAll('script').forEach((script) => {
             if (script.src.endsWith('jquery/1.10.2/jquery.min.js') ||
                 script.src.endsWith('extjs/xss.js')) {
                 script.parentNode.removeChild(script);
